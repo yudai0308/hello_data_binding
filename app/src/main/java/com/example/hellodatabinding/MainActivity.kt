@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.hellodatabinding.databinding.ActivityMainBinding
 
@@ -19,15 +18,16 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         binding.viewModel = userViewModel
+        binding.lifecycleOwner = this
         binding.editText.addTextChangedListener { text ->
             userViewModel.setName(text.toString())
         }
 
-        val greetingObserver = Observer<String> { greeting ->
-            binding.textView.text = greeting
-        }
-
-        userViewModel.greeting.observe(this, greetingObserver)
+//        // binding に lifecycleOwner を設定しない場合は一方向データバインディングとなり、
+//        // 以下のようにデータが変更されたときの処理を書かないといけない。
+//        userViewModel.greeting.observe(this, Observer { greeting ->
+//            binding.textView.text = greeting
+//        })
 
     }
 }

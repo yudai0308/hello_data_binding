@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-kapt' // 追加
 
 android {
     compileSdkVersion 29
@@ -28,6 +28,7 @@ android {
         jvmTarget = '1.8'
     }
 
+    // dataBinding を有効にする。
     dataBinding {
         enabled = true
     }

@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class UserViewModel : ViewModel() {
-    /**
-     * ここで User モデルではなく、単に String 型の LiveData を使ってしまうと
-     * 双方向データバインディングが実現できなくなるので注意。
-     */
+
     private val _user = MutableLiveData(User("John Doe"))
     private val _greeting = MutableLiveData("Hello, ${_user.value?.name}!")
 

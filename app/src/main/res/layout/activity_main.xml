@@ -1,14 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!-- データバインディングを行う場合は、ルートが layout タグである必要があります。 -->
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- レイアウトファイル内で使う変数を data タグの中で定義します。 -->
     <data>
-
+        <!-- 変数 viewModel を定義します。 -->
         <variable
             name="viewModel"
             type="com.example.hellodatabinding.UserViewModel" />
     </data>
 
+    <!-- 以下、通常どおり画面を作ります。 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -17,10 +19,8 @@
 
         <!--
          android:text の値が @={...} であることに注意。
-         イコールがあることで双方向データバインディングが実現できる。
-         入力欄に入力された値はリアルタイムで viewModel の値を変更してくれる。
-         このとき、自動的に getXXX、setXXX が呼ばれるため、ゲッターとセッターが実装されている必要がある。
-         （ここでは User#getName と User#setName の実装が必要。）
+         イコールがないと双方向にデータバインディングできない。
+         ここではゲッター、セッターが自動的に呼ばれるため、User#getName と User#setName の実装が必要。
          -->
         <EditText
             android:id="@+id/edit_text"

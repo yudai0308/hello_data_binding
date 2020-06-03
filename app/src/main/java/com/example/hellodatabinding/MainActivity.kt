@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         /**
-         * binding に lifecycleOwner を設定すれば双方向データバインディングが実現できる。
-         * EditText の入力値が変更されたときの処理や、greeting の値が変更されたときの処理を実装する必要がない。
+         * binding に lifecycleOwner を設定しないと双方向にデータバインディングできない。
          */
         binding.apply {
             viewModel = userViewModel
